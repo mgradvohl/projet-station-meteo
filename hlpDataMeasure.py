@@ -187,4 +187,6 @@ class DataMeasure:
         if i == len(data)-1 : return -1        # -1  if not found
         SecondEdge = i
 
-        return (SecondEdge - FirstEdge)
+        Period = SecondEdge - FirstEdge
+
+        return Period

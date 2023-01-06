@@ -130,11 +130,11 @@ def GUIUpdate(root, w):
 
     # ===Done=== set Encodeur boolean indicators (background color value : light if bit true, dark else)
     # For each bit read by the encoder and converted, we make a binary comparison 
-    # and show the color grey (abc) if true and yellow (fb1) if false
-    w.EP1_0["bg"] = '#abc' if (conversion(EMes.Encodeur) & 0b00000001) == 0b00000001  else '#fb1'               # use this model   : x = ValTrue  if (condition)  else ValFalse
-    w.EP1_1["bg"] = '#abc' if (conversion(EMes.Encodeur) & 0b00000010) == 0b00000010  else '#fb1'
-    w.EP1_2["bg"] = '#abc' if (conversion(EMes.Encodeur) & 0b00000100) == 0b00000100  else '#fb1'                # use named colors : https://matplotlib.org/stable/gallery/color/named_colors.html
-    w.EP1_3["bg"] = '#abc' if (conversion(EMes.Encodeur) & 0b00001000) == 0b00001000  else '#fb1'
+    # and show the color grey (f0ffff) if true and yellow (abc) if false
+    w.EP1_0["bg"] = '#f0ffff' if (conversion(EMes.Encodeur) & 0b00000001) == 0b00000001  else '#abc'               # use this model   : x = ValTrue  if (condition)  else ValFalse
+    w.EP1_1["bg"] = '#f0ffff' if (conversion(EMes.Encodeur) & 0b00000010) == 0b00000010  else '#abc'
+    w.EP1_2["bg"] = '#f0ffff' if (conversion(EMes.Encodeur) & 0b00000100) == 0b00000100  else '#abc'               # use named colors : https://matplotlib.org/stable/gallery/color/named_colors.html
+    w.EP1_3["bg"] = '#f0ffff' if (conversion(EMes.Encodeur) & 0b00001000) == 0b00001000  else '#abc'
 
     GraphHumidite.Plot (EMes.HumidimetreAX, EMes.HumidimetreAY)
     ChartGirouette.Plot(EMes.Girouette)
