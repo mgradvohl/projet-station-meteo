@@ -128,6 +128,16 @@ def GUIUpdate(root, w):
     w.ETempsBoucleR ["text"]  = "{:.0f} ms".format(EMes.TempsBoucleR)
     w.ETempsBoucleL ["text"]  = "{:.0f} ms".format(EMes.TempsBoucleL)
 
+    # ===Done=== 
+    # update physical measures
+    w.PDirecVent   ["text"]  = "{:s}"       .format(PMes.Direction)
+    w.PVitVent     ["text"]  = "{:.1f} km/h".format(PMes.Vitesse)
+    w.PTemperature ["text"]  = "{:.1f} °C"  .format(PMes.Temperature)
+    w.PLuminosite  ["text"]  = "{:.0f} kLux".format(PMes.Luminosite)
+    w.PHumidite    ["text"]  = "{:.0f} %"   .format(PMes.Humidite)
+    w.PPluviometrie["text"]  = "{:.0f} mm"  .format(PMes.Pluviometrie)
+    w.PNombreStation["text"] = "{:.0f} "    .format(PMes.Station)
+
     # ===Done=== set Encodeur boolean indicators (background color value : light if bit true, dark else)
     # For each bit read by the encoder and converted, we make a binary comparison 
     # and show the color grey (f0ffff) if true and yellow (abc) if false

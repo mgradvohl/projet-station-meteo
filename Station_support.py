@@ -17,7 +17,17 @@ def GUIRefresh():
     root.after(200, GUIRefresh)                                # run every 200ms
 
 def BtnPlvResetEvt(*args):
+    EMes.Girouette   = 0   
+    EMes.Anemometre  = 0
+    EMes.Thermometre = 0
+    EMes.Luxmetre    = 0
+    EMes.Humidimetre = 0
     EMes.Pluviometre = 0
+    EMes.Encodeur    = 0
+    EMes.DureeMesures= 0
+    EMes.TempsBoucleR= 0
+    EMes.TempsBoucleL= 0
+
 #-------------------------------------------------------------------------------
 
 def main(*args):
