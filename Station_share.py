@@ -168,4 +168,4 @@ def GUIUpdate(root, w):
     if not ErMes.ErrorFlag:
         w.Etat       ['text'] = "Mesures en cours ..."
     else:
-        w.Etat       ['text'] = "Function: {:s}  Code: {:d}  Type: {:s}".format(ErMes.ErrorFunctionName, ErMes.ErrorCode, ErMes.ErrorType)
+        w.Etat       ['text'] = "Function: {:s}  Code: {:d}  Type: {:d}".format(ErMes.ErrorFunctionName, ErMes.ErrorCode, ErMes.ErrorType)
