@@ -27,3 +27,12 @@ logiciel    physique
 0.914       southeast
 3.031       southwest
 4.204       northwest
+
+n-ne 1.984
+ne-e il y a pas
+e-se 0.329
+se-s 0.628
+s-so 1.206
+so-o 2.890
+o-no 3.935
+no-n 3.370

@@ -104,13 +104,21 @@ def conversion(bits):
     elif bits == 7:
         return 15
 
+# ===Done=== 
+# definition of function clamp to update progress bars 
+def clamp(num, min_value, max_value):
+    num = max(min(num, max_value), min_value)
+    return num
+
 def GUIUpdate(root, w):
+    import time
+
     global GraphHumidite, ChartGirouette
-    
+
     # create three graphs on GUI at the first call
     if GraphHumidite  == None: GraphHumidite  = GraphPlot(root, w.EGraphHumidite)
     if ChartGirouette == None: ChartGirouette = ChartPlot(root, w.EChartGirouette, 100)
-   #if PeakVitesse    == None: PeakVitesse    = PeakPlot (root, w.PPeakVitesse,    100)  ===ToDo===
+    # if PeakVitesse    == None: PeakVitesse    = PeakPlot (root, w.PPeakVitesse,    100)  ===ToDo===
     
     # ===ToDo===  fullfill PeakPlot class in hlpGUIGraph.py and create PPeakVitesse canvas on GUI
     #
@@ -126,17 +134,7 @@ def GUIUpdate(root, w):
     w.EAnemometre   ["text"]  = "{:.0f}"   .format(EMes.Anemometre)
     w.EDureeMesures ["text"]  = "{:.0f} ms".format(EMes.DureeMesures)
     w.ETempsBoucleR ["text"]  = "{:.0f} ms".format(EMes.TempsBoucleR)
-    w.ETempsBoucleL ["text"]  = "{:.0f} ms".format(EMes.TempsBoucleL)
-
-    # ===Done=== 
-    # update physical measures
-    w.PDirecVent   ["text"]  = "{:s}"       .format(PMes.Direction)
-    w.PVitVent     ["text"]  = "{:.1f} km/h".format(PMes.Vitesse)
-    w.PTemperature ["text"]  = "{:.1f} °C"  .format(PMes.Temperature)
-    w.PLuminosite  ["text"]  = "{:.0f} kLux".format(PMes.Luminosite)
-    w.PHumidite    ["text"]  = "{:.0f} %"   .format(PMes.Humidite)
-    w.PPluviometrie["text"]  = "{:.0f} mm"  .format(PMes.Pluviometrie)
-    w.PNombreStation["text"] = "{:.0f} "    .format(PMes.Station)
+    w.ETempsBoucleL ["text"]  = "{:.0f} ms".format(EMes.TempsBoucleL)  
 
     # ===Done=== set Encodeur boolean indicators (background color value : light if bit true, dark else)
     # For each bit read by the encoder and converted, we make a binary comparison 
@@ -150,24 +148,23 @@ def GUIUpdate(root, w):
     ChartGirouette.Plot(EMes.Girouette)
     
     # update physical measures
+    # ===Done=== copy physical measures to indicators
     #
-    # ===ToDo=== copy physical measures to indicators
-    #
-    # w.PDirection    ["text"]  =      use "format" function as electrical measures
-    # w.PVitesse      ["text"]  =
-    # w.PTemperature  ["text"]  =      
-    # w.PHumidite     ["text"]  =
-    # w.PLuminosite   ["text"]  =
-    # w.PPluviometrie ["text"]  =
-    # w.PStation      ["text"]  =
+    w.PDirecVent   ["text"]  = "{:s}"       .format(PMes.Direction)
+    w.PVitVent     ["text"]  = "{:.1f} km/h".format(PMes.Vitesse)
+    w.PTemperature ["text"]  = "{:.1f} °C"  .format(PMes.Temperature)
+    w.PLuminosite  ["text"]  = "{:.0f} kLux".format(PMes.Luminosite)
+    w.PHumidite    ["text"]  = "{:.0f} %"   .format(PMes.Humidite)
+    w.PPluviometrie["text"]  = "{:.0f} mm"  .format(PMes.Pluviometrie)
+    w.PNombreStation["text"] = "{:.0f} "    .format(PMes.Station)
     #
     # create the "clamp" function to constraint data into limits
     #
-    # w.PBVitesse      ["value"] = clamp(int(PMes.Vitesse),      0, 30)
-    # w.PBTemperature  ["value"] = clamp(int(PMes.Temperature),  0, 50)
-    # w.PBLuminosite   ["value"] = clamp(int(Luminosite),        0, 150)
-    # w.PBHumidite     ["value"] = clamp(int(PMes.Humidite),     0, 100)
-    # w.PBPluviometrie ["value"] = clamp(int(PMes.Pluviometrie), 0, 10)
+    w.PBVitVent      ["value"] = clamp(int(PMes.Vitesse),      0, 30)
+    w.PBTemperature  ["value"] = clamp(int(PMes.Temperature),  0, 50)
+    w.PBLuminosite   ["value"] = clamp(int(PMes.Luminosite),   0, 150)
+    w.PBHumidite     ["value"] = clamp(int(PMes.Humidite),     0, 100)
+    w.PBPluviometrie ["value"] = clamp(int(PMes.Pluviometrie), 0, 10)
     #
     # peak_list = PeakVitesse.Plot(datetime.now(), PMes.Vitesse, PMes.Direction)
     #

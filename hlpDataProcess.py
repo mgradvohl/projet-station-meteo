@@ -12,23 +12,30 @@ class PhysicalConversions:
 
         # function to convert tension values measured in the Girrouette 
         # and convert according to the designated cardinal points
+
         def convGirrouette(ValeurGirouette):
             direction = ""
-            if ValeurGirouette <= 3.8 and ValeurGirouette >= 3.7:
+            if ((ValeurGirouette <= 3.8 and ValeurGirouette >= 3.7) 
+                or (ValeurGirouette <= 2.0 and ValeurGirouette >= 1.9)):
                 direction = "NORD"
-            elif ValeurGirouette <= 1.5 and ValeurGirouette >= 1.4:
+            elif ((ValeurGirouette <= 1.5 and ValeurGirouette >= 1.4)
+                or (ValeurGirouette <= 1.3 and ValeurGirouette >= 1.2)):
                 direction = "SUD"
-            elif ValeurGirouette <= 4.5 and ValeurGirouette >= 4.4:
+            elif ((ValeurGirouette <= 4.5 and ValeurGirouette >= 4.4)
+                or (ValeurGirouette <= 4.0 and ValeurGirouette >= 3.9)):
                 direction = "OUEST"
-            elif ValeurGirouette <= 0.5 and ValeurGirouette >= 0.4:
+            elif ValeurGirouette <= 0.5 and ValeurGirouette >= 0.3:
                 direction = "EST"
-            elif ValeurGirouette <= 4.3 and ValeurGirouette >= 4.2:
+            elif ((ValeurGirouette <= 4.3 and ValeurGirouette >= 4.2)
+                or (ValeurGirouette <= 3.4 and ValeurGirouette >= 3.3)):
                 direction = "NORD OUEST"
             elif ValeurGirouette <= 2.3 and ValeurGirouette >= 2.2:
                 direction = "NORD EST"
-            elif ValeurGirouette <= 1 and ValeurGirouette >= 0.9:
+            elif ((ValeurGirouette <= 1 and ValeurGirouette >= 0.9)
+                or (ValeurGirouette <= 0.7 and ValeurGirouette >= 0.6)):
                 direction = "SUD EST"
-            elif ValeurGirouette <= 3.1 and ValeurGirouette >= 3.0:
+            elif ((ValeurGirouette <= 3.1 and ValeurGirouette >= 3.0)
+                or (ValeurGirouette <= 2.9 and ValeurGirouette >= 2.8)):
                 direction = "SUD OUEST"
             
             return direction
