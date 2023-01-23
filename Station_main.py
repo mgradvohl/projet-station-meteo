@@ -9,6 +9,7 @@ import time
 import continuous_threading
 from hlpDataMeasure import DataMeasure
 from hlpDataProcess import PhysicalConversions
+from hlpDataFile    import DataFileHelper
 
 TimedLoopFastPeriod = 0.1  # time in seconds
 TimedLoopSlowPeriod = 1    # time in seconds
@@ -45,6 +46,7 @@ def TimedLoopFast():
     pc.mesuresMinMax()
 
     EMes.DureeMesures = (time.perf_counter()-t0) * 1000   # time in milliseconds
+
 #.......................................................................................................................
 def TimedLoopSlow():
     global dm, PrevLoopSTime, scode
@@ -68,7 +70,10 @@ def TimedLoopsStop():
 if __name__ == "__main__":
     import os; os.system('cls')
     TimedLoopsStart()
+    data_file_helper = DataFileHelper("history.txt")
+    data_file_helper.initHistory()
     GUIStart()
     TimedLoopsStop()
+    
 
 #-----------------------------------------------------------------------------------------------------------------------
