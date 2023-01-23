@@ -47,3 +47,30 @@ class PhysicalConversions:
         PMes.Luminosite   = -31.25 * EMes.Luxmetre + 150        # convert EMes.Luxmetre     4,8V : 0 lux / 0V : 150000 lux  (constraint in the range 0-150000)
         PMes.Pluviometrie = EMes.Pluviometre * 0.2794           # convert EMes.Pluviometre  1 imp. = 0,2794mm
         PMes.Vitesse      = EMes.Anemometre * 2.4               # convert EMes.Anemometre   1 imp./s = 2,4km/h
+
+    def mesuresMinMax(self):
+
+        # valeurs minimales
+        if PMes.Vitesse < PMes.VitesseMin:
+            PMes.VitesseMin = PMes.Vitesse
+        if PMes.Temperature < PMes.TemperatureMin:
+            PMes.TemperatureMin = PMes.Temperature
+        if PMes.Luminosite < PMes.LuminositeMin:
+            PMes.LuminositeMin = PMes.Luminosite
+        if PMes.Humidite < PMes.HumiditeMin:
+            PMes.HumiditeMin = PMes.Humidite
+        if PMes.Pluviometrie < PMes.PluviometrieMin:
+            PMes.PluviometrieMin = PMes.Pluviometrie
+
+        # valeurs maximales
+        if PMes.Vitesse > PMes.VitesseMax:
+            PMes.VitesseMax = PMes.Vitesse
+        if PMes.Temperature > PMes.TemperatureMax:
+            PMes.TemperatureMax = PMes.Temperature
+        if PMes.Luminosite > PMes.LuminositeMax:
+            PMes.LuminositeMax = PMes.Luminosite
+        if PMes.Humidite > PMes.HumiditeMax:
+            PMes.HumiditeMax = PMes.Humidite
+        if PMes.Pluviometrie > PMes.PluviometrieMax:
+            PMes.PluviometrieMax = PMes.Pluviometrie
+        

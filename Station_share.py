@@ -26,6 +26,20 @@ class PhysicalMeasures:
     Pluviometrie : float = 0
     Station      : int   = 0
 
+    # pour les valeurs min
+    VitesseMin     : float = 30
+    TemperatureMin : float = 50
+    LuminositeMin  : float = 150
+    HumiditeMin    : float = 100
+    PluviometrieMin: float = 10
+
+    # pour les valeurs max
+    VitesseMax     : float = 0
+    TemperatureMax : float = 0
+    LuminositeMax  : float = 0
+    HumiditeMax    : float = 0
+    PluviometrieMax: float = 0
+
 class ErrorMeasures:
     CurrentCode       : int  = 0
     ErrorFlag         : bool = False
@@ -176,3 +190,18 @@ def GUIUpdate(root, w):
         w.Etat       ['text'] = "Mesures en cours ..."
     else:
         w.Etat       ['text'] = "Function: {:s}  Code: {:d}  Type: {:d}".format(ErMes.ErrorFunctionName, ErMes.ErrorCode, ErMes.ErrorType)
+
+def MinMaxUpdate(w2):
+    # ===Done===
+    # show min and max values on second window
+    w2.MinVitVent     ["text"]  = "{:.1f} km/h".format(PMes.VitesseMin)
+    w2.MinTemperature ["text"]  = "{:.1f} °C"  .format(PMes.TemperatureMin)
+    w2.MinLuminosite  ["text"]  = "{:.1f} kLux".format(PMes.LuminositeMin)
+    w2.MinHumidite    ["text"]  = "{:.1f} %"   .format(PMes.HumiditeMin)
+    w2.MinPluviometrie["text"]  = "{:.1f} mm"  .format(PMes.PluviometrieMin)
+    
+    w2.MaxVitVent     ["text"]  = "{:.1f} km/h".format(PMes.VitesseMax)
+    w2.MaxTemperature ["text"]  = "{:.1f} °C"  .format(PMes.TemperatureMax)
+    w2.MaxLuminosite  ["text"]  = "{:.1f} kLux".format(PMes.LuminositeMax)
+    w2.MaxHumidite    ["text"]  = "{:.1f} %"   .format(PMes.HumiditeMax)
+    w2.MaxPluviometrie["text"]  = "{:.1f} mm"  .format(PMes.PluviometrieMax)

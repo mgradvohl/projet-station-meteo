@@ -42,6 +42,7 @@ def TimedLoopFast():
 
     if (fcode == 0) and (scode == 0): dm.ClearError()
     pc.ConvertToPhysical()
+    pc.mesuresMinMax()
 
     EMes.DureeMesures = (time.perf_counter()-t0) * 1000   # time in milliseconds
 #.......................................................................................................................
