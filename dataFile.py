@@ -19,7 +19,7 @@ class DataFileHelper:
         self.file_handle.write(data)
 
 data_file_helper = DataFileHelper("history.txt")
-#On fera une boucle pour l'écriture à l'intérieur du fichier et eviter les doiublons pour les différentes valeurs
+#On fera une boucle pour l'écriture à l'intérieur du fichier et eviter les doublons pour les différentes valeurs
 #l'enregistrement se fera sous format : DD/MM/YYYY TIME SPEED CARDINAL POINT
 data_file_helper.open()
 data_file_helper.write("Detection de bourrasque : " + str((ctime())) + "\n")
