@@ -75,11 +75,13 @@ def GUICenter(win):
     win.deiconify()
 #.......................................................................................................................
 from hlpGUIGraph import ChartPlot, GraphPlot, PeakPlot
+from hlpDataFile import DataFileHelper
 import matplotlib.colors as mcolors
 
 GraphHumidite  : GraphPlot = None
 ChartGirouette : ChartPlot = None
 PeakVitesse    : PeakPlot  = None
+PeakHistory    : DataFileHelper = None
 
 # ===Done=== 
 # function to convert the numbers read by the 
@@ -126,17 +128,19 @@ def clamp(num, min_value, max_value):
 
 def GUIUpdate(root, w):
     import time
-
-    global GraphHumidite, ChartGirouette
+    from datetime import datetime
+    
+    global GraphHumidite, ChartGirouette, PeakVitesse, PeakHistory
 
     # create three graphs on GUI at the first call
     if GraphHumidite  == None: GraphHumidite  = GraphPlot(root, w.EGraphHumidite)
-    if ChartGirouette == None: ChartGirouette = ChartPlot(root, w.EChartGirouette, 100)
-    # if PeakVitesse    == None: PeakVitesse    = PeakPlot (root, w.PPeakVitesse,    100)  ===ToDo===
+    if ChartGirouette == None: ChartGirouette = ChartPlot(root, w.EChartGirouette,  100)
+    if PeakVitesse    == None: PeakVitesse    = PeakPlot (root, w.PChartBourrasques,100)
+    if PeakHistory    == None: PeakHistory    = DataFileHelper("historique.txt")
     
-    # ===ToDo===  fullfill PeakPlot class in hlpGUIGraph.py and create PPeakVitesse canvas on GUI
+    # ===Done===  fullfill PeakPlot class in hlpGUIGraph.py and create PChartBourrasques canvas on GUI
     #
-    #if PeakVitesse    == None: PeakVitesse    = PeakPlot (root, w.PPeakVitesse,    100)
+    #if PeakVitesse    == None: PeakVitesse    = PeakPlot (root, w.PChartBourrasques,    100)
     
     # update electrical measures
     w.EHumidimetre  ["text"]  = "{:.0f} Hz".format(EMes.Humidimetre)
@@ -160,7 +164,7 @@ def GUIUpdate(root, w):
 
     GraphHumidite.Plot (EMes.HumidimetreAX, EMes.HumidimetreAY)
     ChartGirouette.Plot(EMes.Girouette)
-    
+        
     # update physical measures
     # ===Done=== copy physical measures to indicators
     #
@@ -180,10 +184,14 @@ def GUIUpdate(root, w):
     w.PBHumidite     ["value"] = clamp(int(PMes.Humidite),     0, 100)
     w.PBPluviometrie ["value"] = clamp(int(PMes.Pluviometrie), 0, 10)
     #
-    # peak_list = PeakVitesse.Plot(datetime.now(), PMes.Vitesse, PMes.Direction)
     #
-    # ===ToDo=== : - update Label PListeVitesse with peak_list
+    # ===Done=== : - update Label PListeVitesse with peak_list
     #              - save peak_list in text file # peakHistory.saveHistory(peak_list)
+
+    peak_list = PeakVitesse.Plot(datetime.now().strftime('%d/%m/%Y %H:%M:%S'), PMes.Vitesse, PMes.Direction)
+
+    w.PTexteBourrasques ["text"] += peak_list
+    PeakHistory.saveHistory(peak_list)
 
     # update status message
     if not ErMes.ErrorFlag:

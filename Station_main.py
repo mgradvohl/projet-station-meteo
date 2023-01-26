@@ -1,5 +1,10 @@
 #-----------------------------------------------------------------------------------------------------------------------
 # Weather Station Project - Main - Program launcher, Timed loops manager, Perf. monitoring                      JYC-2022
+# 
+# Binome
+# Marina BRASIL GRADVOHL
+# Mouhamed GUEYE
+# 
 #-----------------------------------------------------------------------------------------------------------------------
 
 from Station_share import GUIStart, EMes, ErMes
@@ -9,7 +14,6 @@ import time
 import continuous_threading
 from hlpDataMeasure import DataMeasure
 from hlpDataProcess import PhysicalConversions
-from hlpDataFile    import DataFileHelper
 
 TimedLoopFastPeriod = 0.1  # time in seconds
 TimedLoopSlowPeriod = 1    # time in seconds
@@ -69,9 +73,7 @@ def TimedLoopsStop():
 #-- Application start & stop -------------------------------------------------------------------------------------------
 if __name__ == "__main__":
     import os; os.system('cls')
-    TimedLoopsStart()
-    peakHistory = DataFileHelper("historique.txt")
-    peakHistory.initHistory()
+    TimedLoopsStart() 
     GUIStart()
     TimedLoopsStop()
     

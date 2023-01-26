@@ -9,7 +9,7 @@ from tkinter.constants import *
 import time
 
 import Station, MinMax
-from Station_share import GUICenter, GUIUpdate, EMes, MinMaxUpdate
+from Station_share import GUICenter, GUIUpdate, EMes, PMes, MinMaxUpdate
 
 
 
@@ -21,6 +21,16 @@ def GUIRefresh():
 
 def BtnPlvResetEvt(*args):
     EMes.Pluviometre = 0
+    PMes.VitesseMin = 0
+    PMes.TemperatureMin = 0
+    PMes.LuminositeMin = 0
+    PMes.HumiditeMin = 0
+    PMes.PluviometrieMin = 0
+    PMes.VitesseMax = 30
+    PMes.TemperatureMax = 50
+    PMes.LuminositeMax = 150
+    PMes.HumiditeMax = 100
+    PMes.PluviometrieMax = 10
 
 # ===Done===
 # creates second window to show min and max values

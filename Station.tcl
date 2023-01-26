@@ -628,7 +628,7 @@ proc vTclWindow.top1 {base} {
         -foreground $vTcl(actual_gui_fg) \
         -highlightbackground $vTcl(actual_gui_bg) -highlightcolor black \
         -justify left -relief sunken -text Texte 
-    vTcl:DefineAlias "$site_3_0.lab46" "PTexteBourrage" vTcl:WidgetProc "MainWin" 1
+    vTcl:DefineAlias "$site_3_0.lab46" "PTexteBourrasques" vTcl:WidgetProc "MainWin" 1
     label $site_3_0.lab47 \
         -activebackground #f9f9f9 -activeforeground black -anchor e \
         -background $vTcl(actual_gui_bg) -disabledforeground #a3a3a3 \
