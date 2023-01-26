@@ -70,8 +70,8 @@ def TimedLoopsStop():
 if __name__ == "__main__":
     import os; os.system('cls')
     TimedLoopsStart()
-    data_file_helper = DataFileHelper("history.txt")
-    data_file_helper.initHistory()
+    peakHistory = DataFileHelper("historique.txt")
+    peakHistory.initHistory()
     GUIStart()
     TimedLoopsStop()
     

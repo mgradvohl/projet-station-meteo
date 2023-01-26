@@ -183,7 +183,7 @@ def GUIUpdate(root, w):
     # peak_list = PeakVitesse.Plot(datetime.now(), PMes.Vitesse, PMes.Direction)
     #
     # ===ToDo=== : - update Label PListeVitesse with peak_list
-    #              - save peak_list in text file
+    #              - save peak_list in text file # peakHistory.saveHistory(peak_list)
 
     # update status message
     if not ErMes.ErrorFlag:

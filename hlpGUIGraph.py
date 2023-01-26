@@ -48,7 +48,12 @@ class ChartPlot:
 #-----------------------------------------------------------------------------------------------------------------------
 # ===ToDo===  fullfill this class
 def PeakDetect(Values, Delta):
-    pass
+    TabPos : int = []
+    TabHeight : float = []
+    TabPos.append(30); TabHeight.append(Values[30])
+    TabPos.append(60); TabHeight.append(Values[60])
+
+    return TabPos, TabHeight
 
 class PeakPlot:
     def __init__(self, root, canvas, nbpoints):
@@ -56,5 +61,15 @@ class PeakPlot:
 
     def Plot(self, t:datetime, v:float, d:str):
         pass
+        # fig = plt.figure("Plotting peak detection")
+        # ax = fig.subplots()
+
+        # ax.plot(x,y)
+        # ax.scatter(peak_pos, peak_height, color = 'r', s = 50, marker = 'D', label = 'Peaks')
+        # ax.legend()
+        # ax.grid()
+
+        # plt.show()
+
 
 #-----------------------------------------------------------------------------------------------------------------------

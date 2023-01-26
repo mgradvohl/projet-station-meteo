@@ -79,7 +79,7 @@ class DataMeasure:
             self.bTask.di_channels.add_di_chan             (lines = DevName+"/port0/line7", line_grouping = LineGrouping.CHAN_PER_LINE)
             #...........................................................................................................
             self.nTask = nidaqmx.Task                      ("iNtegerTask")
-            self.nTask.di_channels.add_di_chan             (lines = "Dev4/port1/line0:3", line_grouping = LineGrouping.CHAN_FOR_ALL_LINES)
+            self.nTask.di_channels.add_di_chan             (lines = DevName+"/port1/line0:3", line_grouping = LineGrouping.CHAN_FOR_ALL_LINES)
             #...........................................................................................................
             self.cTask = nidaqmx.Task                      ("CounterTask")
             self.cTask.ci_channels.add_ci_count_edges_chan (counter = DevName+"/ctr0", edge = Edge.FALLING).ci_count_edges_term = "/"+DevName+"/pfi0"
@@ -161,11 +161,6 @@ class DataMeasure:
 
     #-------------------------------------------------------------------------------------------------------------------
     def GetEdgesWidth(self, trigger, data):
-        # def GetPeriod(Tab):
-            # Period = 100 #replace with period compute
-            # Begin = 10 #replace with begin compute
-            # return Period, Begin
-
         for i in range(0, len(data)):
             if data[i] < trigger : break       # finding low state
         if i == len(data)-1 : return -1        # -1  if not found
@@ -187,6 +182,4 @@ class DataMeasure:
         if i == len(data)-1 : return -1        # -1  if not found
         SecondEdge = i
 
-        # Period = SecondEdge - FirstEdge
-
-        return (SecondEdge - FirstEdge) # Period
+        return (SecondEdge - FirstEdge)
